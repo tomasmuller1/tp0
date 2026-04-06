@@ -92,7 +92,7 @@ void leer_consola(t_log* logger)
 	leido = readline("> ");
 
 	// El resto, las vamos leyendo y logueando hasta recibir un string vacío
-	while(strcmp(leido, "") == 0)
+	while(strcmp(leido, "") != 0)
 	{
 		log_info(logger, "%s", leido);
 		free(leido);
@@ -112,7 +112,7 @@ void paquete(int conexion)
 	// Leemos y esta vez agregamos las lineas al paquete
 	leido = readline("> ");
 
-	while(strcmp(leido, "") == 0)
+	while(strcmp(leido, "") != 0)
 	{
 		agregar_a_paquete(paquete, leido, strlen(leido) + 1);
 		free(leido);
