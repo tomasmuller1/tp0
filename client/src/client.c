@@ -33,9 +33,9 @@ int main(void)
 	valor = config_get_string_value(config, "CLAVE");
 
 	// Loggeamos el valor de config
-	log_info(logger, %s, ip);
-	log_info(logger, %s, puerto);
-	log_info(logger, %s, valor);
+	log_info(logger, "%s", ip);
+	log_info(logger, "%s", puerto);
+	log_info(logger, "%s", valor);
 
 	/* ---------------- LEER DE CONSOLA ---------------- */
 
@@ -94,7 +94,7 @@ void leer_consola(t_log* logger)
 	// El resto, las vamos leyendo y logueando hasta recibir un string vacío
 	while(strcmp(leido, "") == 0)
 	{
-		log_info(logger, leido);
+		log_info(logger, "%s", leido);
 		free(leido);
 		leido = readline("> ");
 	}
@@ -119,7 +119,7 @@ void paquete(int conexion)
 		leido = readline("> ");
 	}
 
-	enviar_paquete(paquete);
+	enviar_paquete(paquete, conexion);
 
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	free(leido);
