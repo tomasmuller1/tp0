@@ -33,9 +33,9 @@ int main(void)
 	valor = config_get_string_value(config, "CLAVE");
 
 	// Loggeamos el valor de config
-	log_info(logger, ip);
-	log_info(logger, puerto);
-	log_info(logger, valor);
+	log_info(logger, %s, ip);
+	log_info(logger, %s, puerto);
+	log_info(logger, %s, valor);
 
 	/* ---------------- LEER DE CONSOLA ---------------- */
 
@@ -53,7 +53,6 @@ int main(void)
 
 	// Armamos y enviamos el paquete
 	paquete(conexion);
-	enviar_paquete(paquete, conexion);
 
 	terminar_programa(conexion, logger, config);
 
@@ -119,6 +118,8 @@ void paquete(int conexion)
 		free(leido);
 		leido = readline("> ");
 	}
+
+	enviar_paquete(paquete);
 
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	free(leido);
